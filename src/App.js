@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import AddToDo,{CompleteToDo, inactiveTodos} from './Action';
+import AddToDo,{CompleteToDo, InactiveTodos} from './Action';
 import {connect} from 'react-redux';
-import CompleteToDO from './Action';
-import InactiveTodos from './Action';
 
 class App extends Component {
 
@@ -34,19 +32,42 @@ class App extends Component {
 
   onInactiveClick=()=>{
    this.props.dispatch(InactiveTodos())
-    //console.log('vsdd')
+    
   }
   render() {
     const {value} = this.props;
+    let display;
+  //  { this.props.value.map((todoItem,i)=>{
+      
+  //     if(todoItem.status=="ALL"){
+  //       todoItem.isCompleted ?             
+  //       // display = ( <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)} style={{textDecoration:'line-through'}}>
+  //       //   {todoItem.todoText}
+  //       //   </li> )  
+  //       display=(<li>hiiii</li>)
+  //         :
+  //         display=(<li>{todoItem.todoText}</li>)
+  //     //    display = ( <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)}>
+  //     //   {todoItem.todoText}
+  //     // </li>)
+  //     }
+  //     // if(todoItem.status == "COMPLETED"){
+  //     //   display = ( <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)} style={{textDecoration:'line-through'}}>
+  //     //   {todoItem.todoText}
+  //     //   </li> )
+  //     // }
+
+       
+//})}
+
     return (
       <div className="App">
         <input type="text" name="txttodod" value={this.state.txtValue} onChange={this.onTextChange}/>
         <button onClick={this.onButtonClick}>Click</button>
-        <label onClick={this.onInactiveClick}>Inactive</label>
+        <button onClick={this.onInactiveClick}>Inactive</button>
         <a></a>
         <ul>
         {this.props.value.map((todoItem,i)=>(  
-            
               todoItem.isCompleted ?             
               <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)} style={{textDecoration:'line-through'}}>
                 {todoItem.todoText}
@@ -67,4 +88,5 @@ function mapStateToProps(state){
     value:state
   }
 }
+
 export default connect(mapStateToProps)(App);

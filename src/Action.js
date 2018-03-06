@@ -16,7 +16,6 @@ export function CompleteToDo(todoId){
 }
 
 export function InactiveTodos(){
-    console.log('hello active')
     return{
         type:'INACTIVE_TODOS'
 
