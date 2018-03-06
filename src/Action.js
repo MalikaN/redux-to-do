@@ -14,3 +14,11 @@ export function CompleteToDo(todoId){
         todoId
     }
 }
+
+export function InactiveTodos(){
+    console.log('hello active')
+    return{
+        type:'INACTIVE_TODOS'
+
+    }
+}

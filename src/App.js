@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import AddToDo,{CompleteToDo} from './Action';
+import AddToDo,{CompleteToDo, inactiveTodos} from './Action';
 import {connect} from 'react-redux';
 import CompleteToDO from './Action';
+import InactiveTodos from './Action';
 
 class App extends Component {
 
@@ -31,22 +32,27 @@ class App extends Component {
    this.props.dispatch(CompleteToDo(todoId))
   }
 
+  onInactiveClick=()=>{
+   this.props.dispatch(InactiveTodos())
+    //console.log('vsdd')
+  }
   render() {
     const {value} = this.props;
-    console.log('rdfsd')
     return (
       <div className="App">
         <input type="text" name="txttodod" value={this.state.txtValue} onChange={this.onTextChange}/>
         <button onClick={this.onButtonClick}>Click</button>
+        <label onClick={this.onInactiveClick}>Inactive</label>
+        <a></a>
         <ul>
         {this.props.value.map((todoItem,i)=>(  
             
               todoItem.isCompleted ?             
               <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)} style={{textDecoration:'line-through'}}>
-                {todoItem.todoText} lol
+                {todoItem.todoText}
               </li>   :
               <li key={i}  onClick={()=>this.onTodoClick(todoItem.id)}>
-              {todoItem.todoText}-rofl
+              {todoItem.todoText}
             </li>
         ))}
                </ul>
